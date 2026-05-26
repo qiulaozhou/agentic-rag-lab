@@ -9,6 +9,7 @@
 3. **Persist everything** — research, decisions, and lessons all go to files; conversations get compacted, files don't
 4. **Incremental development** — one task at a time
 5. **Capture learnings** — after each task, review and write new knowledge back to spec
+6. **Learning mode by default** — each task explains the concept, why it is next, the design choice, the runnable loop, verification, and Trellis feedback
 
 ---
 
@@ -30,6 +31,7 @@ Creates `.trellis/.developer` (gitignored) + `.trellis/workspace/<your-name>/`.
 
 - `.trellis/spec/<package>/<layer>/index.md` — entry point with **Pre-Development Checklist** + **Quality Check**. Actual guidelines live in the `.md` files it points to.
 - `.trellis/spec/guides/index.md` — cross-package thinking guides.
+- `.trellis/spec/guides/learning-mode-guide.md` — required learning workflow for PRDs, pre-code explanation, verification notes, and Trellis feedback.
 
 ```bash
 C:\Users\admin\AppData\Roaming\uv\python\cpython-3.12.12-windows-x86_64-none\python.exe ./.trellis/scripts/get_context.py --mode packages   # list packages / layers
@@ -39,7 +41,7 @@ C:\Users\admin\AppData\Roaming\uv\python\cpython-3.12.12-windows-x86_64-none\pyt
 
 ### Task System
 
-Every task has its own directory under `.trellis/tasks/{MM-DD-name}/` holding `prd.md`, `implement.jsonl`, `check.jsonl`, `task.json`, optional `research/`, `info.md`.
+Every task has its own directory under `.trellis/tasks/{MM-DD-name}/` holding `prd.md`, `implement.jsonl`, `check.jsonl`, `task.json`, optional `research/`, `info.md`, and `learning.md`.
 
 ```bash
 # Task lifecycle
@@ -162,11 +164,13 @@ No active task. **A Direct answer** — pure Q&A / explanation / lookup / chat; 
 - 1.3 Configure context `[required · once]` — Claude Code, Cursor, OpenCode, Codex, Kiro, Gemini, Qoder, CodeBuddy, Copilot, Droid, Pi
 - 1.4 Activate task `[required · once]` (run `task.py start`; status → in_progress)
 - 1.5 Completion criteria
+- Learning mode: `prd.md` must explain the task's core concept, why it is next now, 2-3 approach options when trade-offs exist, and what is out of scope for learning.
 
 <!-- Per-turn breadcrumb: shown throughout Phase 1 (status='planning') -->
 
 [workflow-state:planning]
 Load the `trellis-brainstorm` skill and iterate on prd.md with the user.
+Learning mode is required: prd.md MUST include Learning Goals, Concepts, Why Now, Approach Options, and Out of Scope for Learning. Explain why this task is next instead of jumping to UI / agent / LangGraph / MCP work.
 Phase 1.3 (required, once): before `task.py start`, you MUST curate `implement.jsonl` and `check.jsonl` — list the spec / research files sub-agents need so they get the right context injected. You may skip only if the jsonl already has agent-curated entries (the seed `_example` row alone doesn't count).
 Then run `task.py start <task-dir>` to flip status to in_progress.
 [/workflow-state:planning]
@@ -179,6 +183,7 @@ Then run `task.py start <task-dir>` to flip status to in_progress.
 
 [workflow-state:planning-inline]
 Load the `trellis-brainstorm` skill and iterate on prd.md with the user.
+Learning mode is required: prd.md MUST include Learning Goals, Concepts, Why Now, Approach Options, and Out of Scope for Learning. Explain why this task is next instead of jumping to UI / agent / LangGraph / MCP work.
 Phase 1.3 jsonl curation is **skipped** in inline dispatch mode — the main session loads `trellis-before-dev` directly in Phase 2 and reads spec context itself, so there is no sub-agent to inject jsonl into.
 Then run `task.py start <task-dir>` to flip status to in_progress.
 [/workflow-state:planning-inline]
@@ -196,6 +201,7 @@ Then run `task.py start <task-dir>` to flip status to in_progress.
 
 [workflow-state:in_progress]
 **Tools**: `trellis-implement` / `trellis-research` are sub-agent types only (Task/Agent tool, NOT Skill — there is no skill by these names). `trellis-update-spec` is a skill. `trellis-check` exists as both; prefer the Agent form when verifying after code changes.
+**Learning mode**: before implementation, make sure the task context includes `.trellis/spec/guides/learning-mode-guide.md`; by finish, leave `{TASK_DIR}/learning.md` with Concept, Why Now, Design Choice, Verification, and Trellis Feedback.
 **Flow**: trellis-implement → trellis-check → trellis-update-spec → commit (Phase 3.4) → `/trellis:finish-work`.
 **Main-session default (no override)**: dispatch the `trellis-implement` / `trellis-check` sub-agents — the main agent does NOT edit code by default. Phase 3.4 commit (required, once): after trellis-update-spec, or whenever implementation is verifiably complete, the main agent **drives the commit** — state the commit plan in user-facing text, then run `git commit` — BEFORE suggesting `/trellis:finish-work`. `/finish-work` refuses to run on a dirty working tree (paths outside `.trellis/workspace/` and `.trellis/tasks/`).
 **Sub-agent self-exemption**: if you are already running as `trellis-implement`, implement directly from the loaded task context and do NOT spawn another `trellis-implement`; if you are already running as `trellis-check`, review/fix directly and do NOT spawn another `trellis-check`. The default dispatch rule applies to the main session only.
@@ -209,8 +215,8 @@ Then run `task.py start <task-dir>` to flip status to in_progress.
      instead of dispatching sub-agents. -->
 
 [workflow-state:in_progress-inline]
-**Flow** (inline mode): main session loads `trellis-before-dev` → main session edits code → main session loads `trellis-check` → run lint / type-check / tests → fix → `trellis-update-spec` → commit (Phase 3.4) → `/trellis:finish-work`.
-**Main-session default (inline dispatch_mode)**: the main agent edits code directly. Do NOT dispatch `trellis-implement` / `trellis-check` sub-agents. Load the `trellis-before-dev` skill before writing code; load the `trellis-check` skill before reporting completion.
+**Flow** (inline mode): main session loads `trellis-before-dev` → main session explains Concept / Why Now / Design Choice → main session edits code → main session loads `trellis-check` → run lint / type-check / tests → fix → write `{TASK_DIR}/learning.md` → `trellis-update-spec` → commit (Phase 3.4) → `/trellis:finish-work`.
+**Main-session default (inline dispatch_mode)**: the main agent edits code directly. Do NOT dispatch `trellis-implement` / `trellis-check` sub-agents. Load the `trellis-before-dev` skill before writing code; it MUST read `.trellis/spec/guides/learning-mode-guide.md` and give a short learning explanation before edits. Load the `trellis-check` skill before reporting completion.
 Phase 3.4 commit (required, once): after `trellis-update-spec`, or whenever implementation is verifiably complete, the main agent **drives the commit** — state the commit plan in user-facing text, then run `git commit` — BEFORE suggesting `/trellis:finish-work`. `/finish-work` refuses to run on a dirty working tree (paths outside `.trellis/workspace/` and `.trellis/tasks/`).
 [/workflow-state:in_progress-inline]
 
@@ -339,6 +345,13 @@ The brainstorm skill will guide you to:
 
 Return to this step whenever requirements change and revise `prd.md`.
 
+For learning-mode tasks, the PRD must also include:
+- `Learning Goals`: what the user should understand after this task
+- `Concepts`: the core AI/software concepts being exercised
+- `Why Now`: why this task belongs before later UI / agent / LangGraph / MCP work
+- `Approach Options`: 2-3 feasible options and a recommendation when a design choice exists
+- `Out of Scope for Learning`: concepts deliberately deferred
+
 #### 1.2 Research `[optional · repeatable]`
 
 Research can happen at any time during requirement exploration. It isn't limited to local code — you can use any available tool (MCP servers, skills, web search, etc.) to look up external information, including third-party library docs, industry practices, API references, etc.
@@ -381,6 +394,7 @@ Curate `implement.jsonl` and `check.jsonl` so the Phase 2 sub-agents get the rig
 **What to put in**:
 - **Spec files** — `.trellis/spec/<package>/<layer>/index.md` and any specific guideline files (`error-handling.md`, `conventions.md`, etc.) relevant to this task
 - **Research files** — `{TASK_DIR}/research/*.md` that the sub-agent will need to consult
+- **Learning guide** — `.trellis/spec/guides/learning-mode-guide.md` for every task in this repository
 
 **What NOT to put in**:
 - Code files (`src/**`, `packages/**/*.ts`, etc.) — those are read by the sub-agent during implementation, not pre-registered here
@@ -437,6 +451,7 @@ If `task.py start` errors with a session-identity message (no context key from h
 |------|:---:|
 | `prd.md` exists | ✅ |
 | User confirms requirements | ✅ |
+| PRD includes Learning Goals, Concepts, Why Now, Approach Options, and Out of Scope for Learning | ✅ |
 | `task.py start` has been run (status = in_progress) | ✅ |
 | `research/` has artifacts (complex tasks) | recommended |
 | `info.md` technical design (complex tasks) | optional |
@@ -501,9 +516,11 @@ The platform prelude auto-handles the context load requirement:
 
 1. Load the `trellis-before-dev` skill to read project guidelines
 2. Read `{TASK_DIR}/prd.md` for requirements
-3. Consult materials under `{TASK_DIR}/research/`
-4. Implement the code per requirements
-5. Run project lint and type-check
+3. Read `.trellis/spec/guides/learning-mode-guide.md`
+4. Before editing, explain the concept, why this task is next, the design choice, and the minimal runnable loop
+5. Consult materials under `{TASK_DIR}/research/`
+6. Implement the code per requirements
+7. Run project lint and type-check
 
 [/codex-inline, Kilo, Antigravity, Windsurf]
 
@@ -532,6 +549,11 @@ Load the `trellis-check` skill and verify the code per its guidance:
 - Cross-layer consistency (when changes span layers)
 
 If issues are found → fix → re-check, until green.
+
+For learning-mode tasks, also verify:
+- The implementation proves a minimal runnable loop, not just code structure
+- The verification command and result are recorded
+- `{TASK_DIR}/learning.md` captures Concepts, Why Now, Design Choice, What Changed, How To Verify, Trellis Feedback, and Next Learning Step
 
 [/codex-inline, Kilo, Antigravity, Windsurf]
 
@@ -571,8 +593,14 @@ Load the `trellis-update-spec` skill and review whether this task produced new k
 - Newly discovered patterns or conventions
 - Pitfalls you hit
 - New technical decisions
+- Learning or workflow habits that should apply to future tasks
 
 Update the docs under `.trellis/spec/` accordingly. Even if the conclusion is "nothing to update", walk through the judgment.
+
+Use this split:
+- Project implementation convention -> `.trellis/spec/<area>/*`
+- Learning / thinking method -> `.trellis/spec/guides/*`
+- One-time task note -> `{TASK_DIR}/learning.md`, not long-term spec
 
 #### 3.4 Commit changes `[required · once]`
 

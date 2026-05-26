@@ -57,6 +57,9 @@ Triggered from /trellis-start when the user describes a development task, especi
    Do not ask "should I search?" or "can you paste the code so I can continue?"
    If you need information: search/inspect. If blocked: ask the minimal blocking question.
 
+8. **Learning mode is mandatory**
+   The PRD must explain what this task teaches, why it belongs now, which options were considered, and which concepts are intentionally deferred.
+
 ---
 
 ## Step 0: Ensure Task Exists (ALWAYS)
@@ -90,6 +93,34 @@ Create/seed `prd.md` immediately with what you know:
 ## Assumptions (temporary)
 
 * <assumptions to validate>
+
+## Learning Goals
+
+* <what the user should understand after this task>
+
+## Concepts
+
+* <core AI/software concepts exercised by this task>
+
+## Why Now
+
+<why this task comes before later UI / agent / LangGraph / MCP work>
+
+## Approach Options
+
+**Option A: <name>** (Recommended)
+
+* Why:
+* Trade-off:
+
+**Option B: <name>**
+
+* Why:
+* Trade-off:
+
+## Out of Scope for Learning
+
+* <concepts deliberately deferred>
 
 ## Open Questions
 
@@ -142,6 +173,7 @@ Write findings into PRD:
 
 * Add to `What I already know`
 * Add constraints/links to `Technical Notes`
+* Add learning implications to `Concepts`, `Why Now`, and `Out of Scope for Learning`
 
 ---
 
@@ -478,6 +510,28 @@ C:\Users\admin\AppData\Roaming\uv\python\cpython-3.12.12-windows-x86_64-none\pyt
 
 * ...
 
+## Learning Goals
+
+* ...
+
+## Concepts
+
+* ...
+
+## Why Now
+
+<why this task is the next learning step>
+
+## Approach Options
+
+**Option A: <name>** (Recommended)
+* Why:
+* Trade-off:
+
+**Option B: <name>**
+* Why:
+* Trade-off:
+
 ## Acceptance Criteria
 
 * [ ] ...
@@ -498,6 +552,10 @@ Context / Decision / Consequences
 
 * ...
 
+## Out of Scope for Learning
+
+* ...
+
 ## Technical Notes
 
 <constraints, references, files, research notes>
@@ -512,6 +570,7 @@ Context / Decision / Consequences
 * Meta questions about whether to research
 * Staying narrowly on the initial request without considering evolution/edges
 * Letting brainstorming drift without updating PRD
+* Writing only "what to build" without "what to learn"
 
 ---
 

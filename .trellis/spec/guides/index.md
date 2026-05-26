@@ -21,12 +21,22 @@ These guides help you **ask the right questions before coding**.
 
 | Guide | Purpose | When to Use |
 |-------|---------|-------------|
+| [Learning Mode Guide](./learning-mode-guide.md) | Turn each task into concept study, minimal implementation, verification, and reflection | Every Trellis task in this repository |
 | [Code Reuse Thinking Guide](./code-reuse-thinking-guide.md) | Identify patterns and reduce duplication | When you notice repeated patterns |
 | [Cross-Layer Thinking Guide](./cross-layer-thinking-guide.md) | Think through data flow across layers | Features spanning multiple layers |
 
 ---
 
 ## Quick Reference: Thinking Triggers
+
+### Always Start With Learning Mode
+
+- [ ] What concept should this task teach?
+- [ ] Why is this the next task now?
+- [ ] What is the smallest runnable loop?
+- [ ] What should be written to `learning.md` at finish?
+
+→ Read [Learning Mode Guide](./learning-mode-guide.md)
 
 ### When to Think About Cross-Layer Issues
 

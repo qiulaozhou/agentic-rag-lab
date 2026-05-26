@@ -29,6 +29,22 @@ Execute these steps:
    cat .trellis/spec/guides/index.md
    ```
 
-6. Understand the coding standards and patterns you need to follow, then proceed with your development plan.
+6. **Always read the learning-mode guide**:
+   ```bash
+   cat .trellis/spec/guides/learning-mode-guide.md
+   ```
+
+7. **Read the active task PRD and learning context**:
+   - `{TASK_DIR}/prd.md`
+   - `{TASK_DIR}/research/` when present
+   - `{TASK_DIR}/learning.md` when continuing an existing task
+
+8. Before writing code, give the user a short learning explanation:
+   - Concept: what this task exercises
+   - Why now: why this comes before later UI / agent / LangGraph / MCP work
+   - Design choice: the selected option and trade-off
+   - Minimal loop: what runnable slice will prove the concept
+
+9. Understand the coding standards and patterns you need to follow, then proceed with your development plan.
 
 This step is **mandatory** before writing any code.

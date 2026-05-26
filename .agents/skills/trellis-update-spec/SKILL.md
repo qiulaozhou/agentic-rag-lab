@@ -80,6 +80,7 @@ For triggered tasks, include all sections below:
 
 - "This is **how to write** the code" → Put in a spec layer directory
 - "This is **what to consider** before writing" → Put in `guides/`
+- "This is **what I learned in this one task**" → Put in `{TASK_DIR}/learning.md`, not long-term spec
 
 **Example**:
 
@@ -87,8 +88,22 @@ For triggered tasks, include all sections below:
 |----------|----------------|------------------|
 | "Use API X not API Y for this task" | ❌ `guides/` (too specific for a thinking guide) | ✅ Relevant spec file (concrete convention) |
 | "Remember to check X when doing Y" | ❌ Spec file (too abstract for a spec) | ✅ `guides/` (thinking checklist) |
+| "This task taught chunk-size trade-offs" | ❌ Long-term spec (too task-specific) | ✅ `{TASK_DIR}/learning.md` |
+| "Every PRD must explain Why Now before implementation" | ❌ One task note only | ✅ `guides/learning-mode-guide.md` |
 
 **Guides should be short checklists that point to specs**, not duplicate the detailed rules.
+
+### Learning Notes vs Long-Term Spec
+
+Use this split after every task:
+
+| Content | Destination |
+|---------|-------------|
+| Project implementation convention, API contract, env key, test requirement | `.trellis/spec/<area>/*` |
+| Reusable thinking habit or workflow rule | `.trellis/spec/guides/*` |
+| One-off explanation of what this task taught | `{TASK_DIR}/learning.md` |
+
+Do not move every learning note into `.trellis/spec/`. Long-term spec is for rules future tasks should follow.
 
 ---
 
@@ -101,6 +116,7 @@ Answer these questions:
 1. **What did you learn?** (Be specific)
 2. **Why is it important?** (What problem does it prevent?)
 3. **Where does it belong?** (Which spec file?)
+4. **Is it reusable?** If not, keep it in `{TASK_DIR}/learning.md`.
 
 ### Step 2: Classify the Update Type
 
@@ -303,6 +319,7 @@ If you're unsure what to update, answer these prompts:
    - To maintain or extend the feature → Yes, update spec
    - To avoid repeating mistakes → Yes, update spec
    - Purely one-off implementation detail → Maybe skip
+   - Purely one-off learning note → Write or keep it in `{TASK_DIR}/learning.md`
 
 4. **Which area does it relate to?**
    - [ ] Backend code
@@ -318,6 +335,8 @@ If you're unsure what to update, answer these prompts:
 Before finishing your code-spec update:
 
 - [ ] Is the content specific and actionable?
+- [ ] Does this belong in long-term spec instead of only task `learning.md`?
+- [ ] Did you avoid adding one-off learning notes to long-term spec?
 - [ ] Did you include a code example?
 - [ ] Did you explain WHY, not just WHAT?
 - [ ] Did you include executable signatures/contracts?

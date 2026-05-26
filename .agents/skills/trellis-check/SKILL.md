@@ -36,6 +36,15 @@ Run the project's lint, type-check, and test commands. Fix any failures before p
 
 ## Step 4: Review Against Checklist
 
+### Learning Mode
+
+- [ ] `prd.md` includes Learning Goals, Concepts, Why Now, Approach Options, and Out of Scope for Learning?
+- [ ] The change forms a minimal runnable loop instead of only adding disconnected code?
+- [ ] `{TASK_DIR}/learning.md` exists for finished implementation work?
+- [ ] `learning.md` records Concepts, Why Now, Design Choice, What Changed, How To Verify, Trellis Feedback, and Next Learning Step?
+- [ ] Verification proves the concept with concrete commands and results?
+- [ ] Trellis Feedback says either "no spec update needed" or points to the spec/guide update made?
+
 ### Code Quality
 
 - [ ] Linter passes?
@@ -53,6 +62,8 @@ Run the project's lint, type-check, and test commands. Fix any failures before p
 ### Spec Sync
 
 - [ ] Does `.trellis/spec/` need updates? (new patterns, conventions, lessons learned)
+- [ ] Is any learning material incorrectly placed in long-term spec when it belongs only in task `learning.md`?
+- [ ] Is any reusable workflow rule still only in `learning.md` when it belongs in `.trellis/spec/guides/`?
 
 > "If I fixed a bug or discovered something non-obvious, should I document it so future me won't hit the same issue?" → If YES, update the relevant spec doc.
 
@@ -90,3 +101,9 @@ Skip this step if your change is confined to a single layer.
 ## Step 6: Report and Fix
 
 Report violations found and fix them directly. Re-run project checks after fixes.
+
+When reporting completion, include:
+- Verification commands run and their results
+- Whether the runnable loop is proven
+- Where the learning note was written
+- Whether Trellis/spec feedback was applied or intentionally skipped
