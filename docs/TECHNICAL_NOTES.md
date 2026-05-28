@@ -340,10 +340,10 @@ chunk 太小会丢上下文。chunk 太大会带来噪声。overlap 是折中手
 .trellis/tasks/archive/2026-05/05-25-bootstrap-rag-mvp-skeleton/
 ```
 
-当前 ingestion/chunking 任务路径：
+已归档的 ingestion/chunking 任务路径：
 
 ```text
-.trellis/tasks/05-28-add-markdown-txt-ingestion-chunking/
+.trellis/tasks/archive/2026-05/05-28-add-markdown-txt-ingestion-chunking/
 ```
 
 后续每个任务都应该留下类似记录，方便复习每一步为什么这样做。
