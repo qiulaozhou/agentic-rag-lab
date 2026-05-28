@@ -16,6 +16,16 @@ Use this guide for every Trellis task in this repository. The default working st
 
 This guide is especially important when the task could drift into a larger topic such as UI, agents, LangGraph, MCP, vector stores, or workflow automation.
 
+For RAG learning tasks, prefer proving the smallest local pipeline before
+adding new infrastructure. A good early milestone looks like:
+
+```text
+local file -> SourceDocument -> DocumentChunk -> pytest
+```
+
+Do not skip ahead to UI, agent orchestration, LangGraph, MCP, or vector-store
+selection until the current data step has a deterministic runnable loop.
+
 ---
 
 ## Required Learning Loop

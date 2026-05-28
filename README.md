@@ -5,9 +5,10 @@
 ## Current scope
 
 This repository is the first project in the local AI Agent portfolio plan. The
-current milestone is a runnable FastAPI skeleton, not a full RAG system yet.
+current milestone is a deterministic local ingestion and chunking slice, not a
+full RAG system yet.
 
-Implemented in this skeleton:
+Implemented:
 
 - FastAPI application entry point.
 - `/health` smoke endpoint that works without model credentials.
@@ -15,13 +16,18 @@ Implemented in this skeleton:
 - Minimal LLM provider boundary with an offline `fake` provider.
 - Explicit module boundaries for ingestion, chunking, retrieval, generation,
   and eval.
-- Basic pytest smoke test.
+- UTF-8 Markdown/TXT ingestion into `SourceDocument`.
+- Recursive directory ingestion for supported text files.
+- Character-window chunking into `DocumentChunk` with stable IDs and source
+  metadata.
+- Pytest coverage for health, ingestion, chunking, and the local
+  ingestion-to-chunking pipeline.
 
 Not implemented yet:
 
-- Markdown/TXT/PDF ingestion.
-- Chunking logic.
+- PDF ingestion.
 - Embeddings and vector storage.
+- Retrieval and rerank behavior.
 - Citation-aware answer generation.
 - RAG evaluation reports.
 
@@ -70,10 +76,10 @@ uv run pytest
 ```text
 src/agentic_rag_lab/
 ├── api/          # FastAPI routers
-├── chunking/     # document chunking boundary
+├── chunking/     # deterministic text chunking
 ├── evals/        # evaluation boundary
 ├── generation/   # answer generation boundary
-├── ingestion/    # document ingestion boundary
+├── ingestion/    # Markdown/TXT document ingestion
 ├── llm/          # provider interface and fake provider
 ├── retrieval/    # search/retrieval boundary
 ├── config.py     # environment settings
@@ -83,12 +89,28 @@ src/agentic_rag_lab/
 
 ## Next tasks
 
-Suggested Trellis tasks after this skeleton:
+Suggested Trellis tasks after this ingestion/chunking slice:
 
-1. Add Markdown/TXT ingestion and chunking.
-2. Add local embedding and vector store adapter.
+1. Add local embedding and vector store adapter.
+2. Add basic retrieval over stored chunks.
 3. Add citation-aware answer generation with refusal behavior.
 4. Add `evals/tasks.jsonl`, `evals/run_eval.py`, and `evals/report.md`.
+
+## Local text pipeline
+
+The first offline RAG data slice is available through package helpers:
+
+```python
+from agentic_rag_lab.chunking import chunk_document
+from agentic_rag_lab.ingestion import load_text_file
+
+document = load_text_file("docs/example.md")
+chunks = chunk_document(document, chunk_size=800, overlap=100)
+```
+
+Supported source files are `.md` and `.txt`, read as UTF-8. Ingestion preserves
+`source_path`, `file_name`, and `file_type`; chunking carries that metadata
+forward and adds `chunk_index`, `start`, and `end`.
 
 ## Trellis workflow
 
@@ -102,11 +124,10 @@ Suggested Trellis tasks after this skeleton:
 - `.trellis/spec/`：项目/分层规范。
 - `.trellis/workspace/`：本地工作日志和索引。
 
-当前第一个真实任务：
+当前推荐从 Trellis 当前任务继续：
 
 ```powershell
 $py = 'C:\Users\admin\AppData\Roaming\uv\python\cpython-3.12.12-windows-x86_64-none\python.exe'
-& $py .\.trellis\scripts\task.py start .\.trellis\tasks\05-25-bootstrap-rag-mvp-skeleton
 & $py .\.trellis\scripts\task.py current --source
 ```
 
@@ -117,7 +138,7 @@ $py = 'C:\Users\admin\AppData\Roaming\uv\python\cpython-3.12.12-windows-x86_64-n
 & $py .\.trellis\scripts\task.py list
 
 # 创建新任务
-& $py .\.trellis\scripts\task.py create "Add Markdown TXT ingestion" --slug add-markdown-txt-ingestion --assignee zrf --priority P1
+& $py .\.trellis\scripts\task.py create "Add local embedding adapter" --slug add-local-embedding-adapter --assignee zrf --priority P1
 
 # 当前任务完成后清除 active 指针
 & $py .\.trellis\scripts\task.py finish

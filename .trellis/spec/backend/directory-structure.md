@@ -43,6 +43,11 @@ Tests live under `tests/` and import the package through pytest's configured
   not call vendor SDKs directly.
 - Keep ingestion, chunking, retrieval, generation, and eval as separate
   boundaries. Do not implement RAG flow logic inside API route functions.
+- Put local Markdown/TXT file loading in `ingestion/text.py`. It should turn
+  filesystem inputs into `SourceDocument` values and preserve source metadata.
+- Put deterministic text splitting in `chunking/text.py`. It should turn
+  `SourceDocument` values into `DocumentChunk` values without knowing about
+  embeddings, retrieval stores, or answer generation.
 - Put small shared domain data shapes in `schemas.py` until there is enough
   complexity to split them by subsystem.
 
@@ -63,3 +68,7 @@ Tests live under `tests/` and import the package through pytest's configured
 - `src/agentic_rag_lab/api/health.py` shows a minimal router.
 - `src/agentic_rag_lab/llm/base.py` and `llm/fake.py` show the provider
   boundary and offline implementation.
+- `src/agentic_rag_lab/ingestion/text.py` is the expected home for local text
+  file ingestion.
+- `src/agentic_rag_lab/chunking/text.py` is the expected home for local text
+  chunking.

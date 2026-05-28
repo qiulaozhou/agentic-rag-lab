@@ -1,0 +1,6 @@
+{"file": ".trellis/spec/backend/index.md", "reason": "Backend spec entrypoint for review."}
+{"file": ".trellis/spec/backend/directory-structure.md", "reason": "Review module placement and boundary compliance."}
+{"file": ".trellis/spec/backend/quality-guidelines.md", "reason": "Review deterministic offline tests and scope limits."}
+{"file": ".trellis/spec/backend/error-handling.md", "reason": "Review error handling for unsupported files and invalid chunk parameters."}
+{"file": ".trellis/spec/guides/learning-mode-guide.md", "reason": "Review required learning notes and verification recording."}
+{"file": ".trellis/spec/guides/cross-layer-thinking-guide.md", "reason": "Review data-flow consistency from source files to chunks."}

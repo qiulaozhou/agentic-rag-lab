@@ -1,5 +1,7 @@
 from dataclasses import dataclass, field
 
+MetadataValue = str | int
+
 
 @dataclass(frozen=True)
 class SourceDocument:
@@ -7,7 +9,7 @@ class SourceDocument:
 
     id: str
     text: str
-    metadata: dict[str, str] = field(default_factory=dict)
+    metadata: dict[str, MetadataValue] = field(default_factory=dict)
 
 
 @dataclass(frozen=True)
@@ -17,7 +19,7 @@ class DocumentChunk:
     id: str
     document_id: str
     text: str
-    metadata: dict[str, str] = field(default_factory=dict)
+    metadata: dict[str, MetadataValue] = field(default_factory=dict)
 
 
 @dataclass(frozen=True)
