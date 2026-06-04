@@ -1,0 +1,30 @@
+{
+  "id": "add-local-embedding-vector-store-adapter",
+  "name": "add-local-embedding-vector-store-adapter",
+  "title": "Add Local Embedding And Vector Store Adapter",
+  "description": "Implement a deterministic offline embedding provider and in-memory vector retrieval adapter for DocumentChunk values.",
+  "status": "completed",
+  "dev_type": "backend",
+  "scope": "rag-retrieval",
+  "package": "backend",
+  "priority": "P1",
+  "creator": "zrf",
+  "assignee": "zrf",
+  "createdAt": "2026-06-03",
+  "completedAt": "2026-06-03",
+  "branch": null,
+  "base_branch": "main",
+  "worktree_path": null,
+  "commit": null,
+  "pr_url": null,
+  "subtasks": [],
+  "children": [],
+  "parent": null,
+  "relatedFiles": [
+    "src/agentic_rag_lab/embeddings/",
+    "src/agentic_rag_lab/retrieval/",
+    "tests/"
+  ],
+  "notes": "",
+  "meta": {}
+}

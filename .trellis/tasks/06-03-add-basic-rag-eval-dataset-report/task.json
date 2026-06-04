@@ -1,0 +1,29 @@
+{
+  "id": "add-basic-rag-eval-dataset-report",
+  "name": "add-basic-rag-eval-dataset-report",
+  "title": "Add Basic RAG Eval Dataset And Report",
+  "description": "Add a deterministic local eval runner that checks answer terms, citations, and refusal behavior for small RAG test cases.",
+  "status": "completed",
+  "dev_type": "backend",
+  "scope": "rag-eval",
+  "package": "backend",
+  "priority": "P1",
+  "creator": "zrf",
+  "assignee": "zrf",
+  "createdAt": "2026-06-03",
+  "completedAt": "2026-06-03",
+  "branch": null,
+  "base_branch": "main",
+  "worktree_path": null,
+  "commit": null,
+  "pr_url": null,
+  "subtasks": [],
+  "children": [],
+  "parent": null,
+  "relatedFiles": [
+    "src/agentic_rag_lab/evals/",
+    "tests/"
+  ],
+  "notes": "",
+  "meta": {}
+}

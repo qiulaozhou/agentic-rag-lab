@@ -1,0 +1,31 @@
+{
+  "id": "expand-eval-report-provider-comparison",
+  "name": "expand-eval-report-provider-comparison",
+  "title": "Expand Eval Report For Provider Comparison",
+  "description": "Extend deterministic evals so baseline and provider-configured RAG runs can be compared without real network calls in pytest.",
+  "status": "completed",
+  "dev_type": "backend",
+  "scope": "rag-eval",
+  "package": "backend",
+  "priority": "P1",
+  "creator": "zrf",
+  "assignee": "zrf",
+  "createdAt": "2026-06-04",
+  "completedAt": "2026-06-04",
+  "branch": null,
+  "base_branch": "main",
+  "worktree_path": null,
+  "commit": null,
+  "pr_url": null,
+  "subtasks": [],
+  "children": [],
+  "parent": null,
+  "relatedFiles": [
+    "src/agentic_rag_lab/evals/basic.py",
+    "tests/test_evals.py",
+    "README.md",
+    "docs/TECHNICAL_NOTES.md"
+  ],
+  "notes": "",
+  "meta": {}
+}

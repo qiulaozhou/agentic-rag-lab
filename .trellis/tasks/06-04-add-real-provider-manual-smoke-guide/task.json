@@ -1,0 +1,31 @@
+{
+  "id": "add-real-provider-manual-smoke-guide",
+  "name": "add-real-provider-manual-smoke-guide",
+  "title": "Add Real Provider Manual Smoke Guide",
+  "description": "Document safe local manual smoke checks for OpenAI-compatible provider configuration without committing secrets or running real services in pytest.",
+  "status": "completed",
+  "dev_type": "backend",
+  "scope": "rag-provider-docs",
+  "package": "backend",
+  "priority": "P1",
+  "creator": "zrf",
+  "assignee": "zrf",
+  "createdAt": "2026-06-04",
+  "completedAt": "2026-06-04",
+  "branch": null,
+  "base_branch": "main",
+  "worktree_path": null,
+  "commit": null,
+  "pr_url": null,
+  "subtasks": [],
+  "children": [],
+  "parent": null,
+  "relatedFiles": [
+    "docs/REAL_PROVIDER_SMOKE_GUIDE.md",
+    ".env.example",
+    "README.md",
+    "docs/TECHNICAL_NOTES.md"
+  ],
+  "notes": "",
+  "meta": {}
+}

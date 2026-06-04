@@ -1,0 +1,32 @@
+{
+  "id": "add-openai-compatible-provider-adapters",
+  "name": "add-openai-compatible-provider-adapters",
+  "title": "Add OpenAI-Compatible Provider Adapters",
+  "description": "Add opt-in OpenAI-compatible embedding and LLM-backed answer generation adapters while keeping local offline defaults.",
+  "status": "completed",
+  "dev_type": "backend",
+  "scope": "rag-provider",
+  "package": "backend",
+  "priority": "P1",
+  "creator": "zrf",
+  "assignee": "zrf",
+  "createdAt": "2026-06-04",
+  "completedAt": "2026-06-04",
+  "branch": null,
+  "base_branch": "main",
+  "worktree_path": null,
+  "commit": null,
+  "pr_url": null,
+  "subtasks": [],
+  "children": [],
+  "parent": null,
+  "relatedFiles": [
+    "src/agentic_rag_lab/embeddings/",
+    "src/agentic_rag_lab/llm/",
+    "src/agentic_rag_lab/generation/",
+    "src/agentic_rag_lab/main.py",
+    "tests/"
+  ],
+  "notes": "",
+  "meta": {}
+}

@@ -1,0 +1,29 @@
+{
+  "id": "citation-aware-answer-generation",
+  "name": "citation-aware-answer-generation",
+  "title": "Citation-Aware Answer Generation",
+  "description": "Add a deterministic local answer generator that turns retrieved chunks into GeneratedAnswer values with traceable citations.",
+  "status": "completed",
+  "dev_type": "backend",
+  "scope": "rag-generation",
+  "package": "backend",
+  "priority": "P1",
+  "creator": "zrf",
+  "assignee": "zrf",
+  "createdAt": "2026-06-03",
+  "completedAt": "2026-06-03",
+  "branch": null,
+  "base_branch": "main",
+  "worktree_path": null,
+  "commit": null,
+  "pr_url": null,
+  "subtasks": [],
+  "children": [],
+  "parent": null,
+  "relatedFiles": [
+    "src/agentic_rag_lab/generation/",
+    "tests/"
+  ],
+  "notes": "",
+  "meta": {}
+}

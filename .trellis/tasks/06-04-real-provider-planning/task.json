@@ -1,0 +1,31 @@
+{
+  "id": "real-provider-planning",
+  "name": "real-provider-planning",
+  "title": "Real Provider Planning",
+  "description": "Plan real embedding and LLM provider configuration, safety boundaries, mock testing, and documentation before enabling provider adapters.",
+  "status": "completed",
+  "dev_type": "backend",
+  "scope": "rag-provider",
+  "package": "backend",
+  "priority": "P1",
+  "creator": "zrf",
+  "assignee": "zrf",
+  "createdAt": "2026-06-04",
+  "completedAt": "2026-06-04",
+  "branch": null,
+  "base_branch": "main",
+  "worktree_path": null,
+  "commit": null,
+  "pr_url": null,
+  "subtasks": [],
+  "children": [],
+  "parent": null,
+  "relatedFiles": [
+    "src/agentic_rag_lab/config.py",
+    ".env.example",
+    "README.md",
+    "docs/TECHNICAL_NOTES.md"
+  ],
+  "notes": "",
+  "meta": {}
+}

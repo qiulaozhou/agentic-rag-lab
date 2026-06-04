@@ -1,0 +1,30 @@
+{
+  "id": "add-file-directory-import-api",
+  "name": "add-file-directory-import-api",
+  "title": "Add File And Directory Import API",
+  "description": "Create disk-backed knowledge bases from local Markdown/TXT file paths or directory paths.",
+  "status": "completed",
+  "dev_type": "backend",
+  "scope": "rag-api",
+  "package": "backend",
+  "priority": "P1",
+  "creator": "zrf",
+  "assignee": "zrf",
+  "createdAt": "2026-06-04",
+  "completedAt": "2026-06-04",
+  "branch": null,
+  "base_branch": "main",
+  "worktree_path": null,
+  "commit": null,
+  "pr_url": null,
+  "subtasks": [],
+  "children": [],
+  "parent": null,
+  "relatedFiles": [
+    "src/agentic_rag_lab/api/knowledge_base.py",
+    "src/agentic_rag_lab/ingestion/",
+    "tests/"
+  ],
+  "notes": "",
+  "meta": {}
+}

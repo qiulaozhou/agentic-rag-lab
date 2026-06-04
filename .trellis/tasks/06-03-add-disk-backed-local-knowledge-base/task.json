@@ -1,0 +1,31 @@
+{
+  "id": "add-disk-backed-local-knowledge-base",
+  "name": "add-disk-backed-local-knowledge-base",
+  "title": "Add Disk-Backed Local Knowledge Base",
+  "description": "Persist local knowledge bases to JSON files and restore them when the FastAPI app starts.",
+  "status": "completed",
+  "dev_type": "backend",
+  "scope": "rag-api",
+  "package": "backend",
+  "priority": "P1",
+  "creator": "zrf",
+  "assignee": "zrf",
+  "createdAt": "2026-06-03",
+  "completedAt": "2026-06-03",
+  "branch": null,
+  "base_branch": "main",
+  "worktree_path": null,
+  "commit": null,
+  "pr_url": null,
+  "subtasks": [],
+  "children": [],
+  "parent": null,
+  "relatedFiles": [
+    "src/agentic_rag_lab/knowledge_base/",
+    "src/agentic_rag_lab/config.py",
+    "src/agentic_rag_lab/main.py",
+    "tests/"
+  ],
+  "notes": "",
+  "meta": {}
+}

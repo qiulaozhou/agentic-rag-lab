@@ -1,0 +1,29 @@
+{
+  "id": "add-http-answer-api-boundary",
+  "name": "add-http-answer-api-boundary",
+  "title": "Add HTTP Answer API Boundary",
+  "description": "Expose the local answer pipeline through a minimal FastAPI POST /answer endpoint.",
+  "status": "completed",
+  "dev_type": "backend",
+  "scope": "rag-api",
+  "package": "backend",
+  "priority": "P1",
+  "creator": "zrf",
+  "assignee": "zrf",
+  "createdAt": "2026-06-03",
+  "completedAt": "2026-06-03",
+  "branch": null,
+  "base_branch": "main",
+  "worktree_path": null,
+  "commit": null,
+  "pr_url": null,
+  "subtasks": [],
+  "children": [],
+  "parent": null,
+  "relatedFiles": [
+    "src/agentic_rag_lab/api/",
+    "tests/"
+  ],
+  "notes": "",
+  "meta": {}
+}

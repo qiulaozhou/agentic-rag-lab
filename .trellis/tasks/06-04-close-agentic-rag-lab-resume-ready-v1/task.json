@@ -1,0 +1,32 @@
+{
+  "id": "close-agentic-rag-lab-resume-ready-v1",
+  "name": "close-agentic-rag-lab-resume-ready-v1",
+  "title": "Close Agentic RAG Lab As Resume-Ready V1",
+  "description": "Organize agentic-rag-lab as a resume-ready RAG project V1 with clear learning notes, project showcase, boundaries, and next-project handoff.",
+  "status": "completed",
+  "dev_type": "backend",
+  "scope": "project-closeout",
+  "package": "backend",
+  "priority": "P1",
+  "creator": "zrf",
+  "assignee": "zrf",
+  "createdAt": "2026-06-04",
+  "completedAt": "2026-06-04",
+  "branch": null,
+  "base_branch": "main",
+  "worktree_path": null,
+  "commit": null,
+  "pr_url": null,
+  "subtasks": [],
+  "children": [],
+  "parent": null,
+  "relatedFiles": [
+    "README.md",
+    "docs/TECHNICAL_NOTES.md",
+    "docs/LEARNING_INDEX.md",
+    "docs/PROJECT_SHOWCASE.md",
+    "../AI_AGENT_PORTFOLIO_NOTES.md"
+  ],
+  "notes": "",
+  "meta": {}
+}

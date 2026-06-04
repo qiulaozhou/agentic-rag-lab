@@ -1,0 +1,30 @@
+{
+  "id": "add-persistent-local-knowledge-base",
+  "name": "add-persistent-local-knowledge-base",
+  "title": "Add Persistent Local Knowledge Base",
+  "description": "Add an in-process reusable knowledge base registry and HTTP API for answering against stored local documents.",
+  "status": "completed",
+  "dev_type": "backend",
+  "scope": "rag-api",
+  "package": "backend",
+  "priority": "P1",
+  "creator": "zrf",
+  "assignee": "zrf",
+  "createdAt": "2026-06-03",
+  "completedAt": "2026-06-03",
+  "branch": null,
+  "base_branch": "main",
+  "worktree_path": null,
+  "commit": null,
+  "pr_url": null,
+  "subtasks": [],
+  "children": [],
+  "parent": null,
+  "relatedFiles": [
+    "src/agentic_rag_lab/knowledge_base/",
+    "src/agentic_rag_lab/api/",
+    "tests/"
+  ],
+  "notes": "",
+  "meta": {}
+}

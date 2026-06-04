@@ -1,0 +1,29 @@
+{
+  "id": "build-basic-answer-pipeline-api-boundary",
+  "name": "build-basic-answer-pipeline-api-boundary",
+  "title": "Build Basic Answer Pipeline API Boundary",
+  "description": "Add a small internal answer pipeline that composes retrieval and citation-aware generation behind one answer boundary.",
+  "status": "completed",
+  "dev_type": "backend",
+  "scope": "rag-generation",
+  "package": "backend",
+  "priority": "P1",
+  "creator": "zrf",
+  "assignee": "zrf",
+  "createdAt": "2026-06-03",
+  "completedAt": "2026-06-03",
+  "branch": null,
+  "base_branch": "main",
+  "worktree_path": null,
+  "commit": null,
+  "pr_url": null,
+  "subtasks": [],
+  "children": [],
+  "parent": null,
+  "relatedFiles": [
+    "src/agentic_rag_lab/generation/",
+    "tests/"
+  ],
+  "notes": "",
+  "meta": {}
+}
