@@ -1,10 +1,17 @@
 # Agentic RAG Lab Learning Index
 
-更新日期：2026-06-04
+更新日期：2026-06-18
 
 ## 当前状态
 
 `agentic-rag-lab` 已收口为 `Resume-ready V1`。它不是生产级 RAG 系统，但已经具备一个可以运行、可以测试、可以通过 HTTP 调用、可以导入本地文件、可以恢复本地知识库、可以选择真实 provider、可以做最小 eval 对比的 RAG 工程闭环。
+
+在当前三项目作品集里，后续两步也已经推进完成到：
+
+```text
+ai-agent-workbench: V9 read-only MCP DevTools observation integration
+mcp-devtools-server: first real read-only GitHub + CI MCP tools
+```
 
 完整链路：
 
@@ -104,12 +111,12 @@ LLM-backed generator 接入后，回答正文可以由真实 LLM 生成，但 ci
 - MCP 集成。
 - 多 agent 编排。
 
-## 下一主线
+## 学习顺序中的下一站
 
-`agentic-rag-lab` 作为简历项目 V1 暂时收口。后续主线建议进入：
+`agentic-rag-lab` 作为简历项目 V1 暂时收口。学习顺序上，下一站是：
 
 ```text
 ai-agent-workbench
 ```
 
-`ai-agent-workbench` 应该把 Trellis/harness 工程化实践作为项目重要支撑：让 Agent 不只是回答问题，而是围绕任务计划、约束、工具调用、执行记录、验证结果形成可审计的工作台。
+`ai-agent-workbench` 现在已完成到 V9：让 Agent 不只是回答问题，而是围绕任务计划、约束、工具调用、执行记录、验证结果和只读外部 DevTools observation 形成可审计的工作台。
